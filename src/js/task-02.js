@@ -1,3 +1,24 @@
+// В HTML есть пустой список ul#ingredients.
+
+// <ul id="ingredients"></ul>
+// В JavaScript есть массив строк.
+
+// const ingredients = [
+//   "Potatoes",
+//   "Mushrooms",
+//   "Garlic",
+//   "Tomatos",
+//   "Herbs",
+//   "Condiments",
+// ];
+// Напиши скрипт, который для каждого элемента массива ingredients:
+
+// Создаст отдельный элемент <li>. Обзательно используй метод document.createElement().
+// Добавит название ингредиента как его текстовое содержимое.
+// Добавит элементу класс item.
+// После чего вставит все <li> за одну операцию в список ul.ingredients.
+
+
 const ingredients = [
   'Potatoes',
   'Mushrooms',
@@ -7,34 +28,17 @@ const ingredients = [
   'Condiments',
 ];
 
+
 const listEl = document.querySelector("#ingredients");
-const dish = [];
-ingredients.forEach  ((ingredientsEl) =>  {
-  dish.push (ingredientsEl);
-});
 
-const createFirst = document.createElement("li");
-createFirst.textContent = dish [0];
-createFirst.classList.add("item");
+const addList = (dish) => {
+  return dish.map((addEl) => {
+    const itemEl = document.createElement("li");
+    itemEl.textContent = addEl;
+    itemEl.classList.add("item");
+    return itemEl;
+  });
+};
 
-const createSecond = document.createElement("li");
-createSecond.textContent = dish [1];
-createSecond.classList.add("item");
-
-
-const createThird = document.createElement("li");
-createThird.textContent = dish [2];
-createThird.classList.add("item");
-
-const createFourth = document.createElement("li");
-createFourth.textContent = dish [3];
-createFourth.classList.add("item");
-
-const createFifth = document.createElement("li");
-createFifth.textContent = dish [4];
-createFifth.classList.add("item");
-
-const createSixth = document.createElement("li");
-createSixth.textContent = dish [5];
-createSixth.classList.add("item");
-listEl.append(createFirst, createSecond, createThird, createFourth, createFifth, createSixth);
+const items = addList(ingredients);
+listEl.append(...items);
